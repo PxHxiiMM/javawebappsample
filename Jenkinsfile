@@ -19,15 +19,11 @@ node {
     }
 
     stage('Verify Environment') {
-      steps {
-        // Print the PATH to see if az is available
-        sh 'echo $PATH'
-        // Locate the az command
-        sh 'which az'
-        // Optionally, print the version to confirm it runs
-        sh 'az --version'
-      }
+      sh 'echo $PATH'
+      sh 'which az'
+      sh 'az --version'
     }
+
   
     stage('deploy') {
       def resourceGroup = 'jenkins-get-started-rg'
