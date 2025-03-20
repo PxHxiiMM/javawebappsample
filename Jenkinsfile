@@ -10,7 +10,6 @@ def getFtpPublishProfile(def publishProfilesJson) {
 node {
   // Explicitly set PATH to include /usr/bin
   withEnv([
-    'PATH+EXTRA=/usr/bin',
     'AZURE_SUBSCRIPTION_ID=1e0400e8-e716-442b-90d9-cb663be0ed97',
     'AZURE_TENANT_ID=48b228ae-dc84-4fc3-8c20-2e3570a8fa2d'
   ]) {
@@ -20,12 +19,6 @@ node {
   
     stage('build') {
       sh 'mvn clean package'
-    }
-    
-    stage('Verify Environment') {
-      sh 'echo $PATH'
-      sh 'which az'
-      sh 'az --version'
     }
   
     stage('deploy') {
