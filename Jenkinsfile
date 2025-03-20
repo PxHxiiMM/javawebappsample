@@ -29,7 +29,7 @@ node {
       }
       def pubProfilesJson = sh script: "az webapp deployment list-publishing-profiles -g $resourceGroup -n $webAppName", returnStdout: true
       def ftpProfile = getFtpPublishProfile(pubProfilesJson)
-      sh “az webapp deploy --resource-group jenkins-get-started-rg --name jenkin5 --src-path target/calculator-1.0.war --type war”      
+      sh 'az webapp deploy --resource-group jenkins-get-started-rg --name jenkin5 --src-path target/calculator-1.0.war --type war'      
       sh 'az logout'
     }
   }
